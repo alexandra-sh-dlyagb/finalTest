@@ -1,0 +1,28 @@
+1)cat > Pets
+Cat
+Hamster
+Dog
+cat > BaggageAnimals
+Верблюд
+Лошадь
+Ослик
+
+cat Pets BaggageAnimals > AllAnimals
+cat AllAnimals
+mv AllAnimals AnimalsAll
+
+2)mkdir Animals
+mv AllAnimals Animals
+
+3)apt install mysql-server-8.0
+
+4)sudo dpkg -i virtualbox-6.1_6.1.38-153438~Ubuntu~jammy_amd64.deb.1
+dpkg -r virtualbox-6.1_6.1.38-153438~Ubuntu~jammy_amd64.deb.1
+
+5)history
+
+7) mysql
+use mysql
+CREATE DATABASE FriendsOfPeople;
+
+продолжение работы в файле mySQLPart
