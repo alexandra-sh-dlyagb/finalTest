@@ -1,0 +1,111 @@
+CREATE DATABASE FriendsOfPeople;
+USE FriendsOfPeople;
+
+CREATE TABLE IF NOT EXISTS Cats
+(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    dayOfBirth DATETIME,
+    nameAnimal VARCHAR (30) NOT NULL,
+    commands TEXT,
+    age INT
+);
+CREATE TABLE IF NOT EXISTS Dogs
+(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    dayOfBirth DATETIME,
+    nameAnimal VARCHAR (30) NOT NULL,
+    commands TEXT,
+    age INT
+);
+CREATE TABLE IF NOT EXISTS Hamsters
+(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    dayOfBirth DATETIME,
+    nameAnimal VARCHAR (30) NOT NULL,
+    commands TEXT,
+    age INT
+);
+CREATE TABLE IF NOT EXISTS Camels
+(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    dayOfBirth DATETIME,
+    nameAnimal VARCHAR (30) NOT NULL,
+    commands TEXT,
+    age INT
+);
+CREATE TABLE IF NOT EXISTS Horses
+(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    dayOfBirth DATETIME,
+    nameAnimal VARCHAR (30) NOT NULL,
+    commands TEXT,
+    age INT
+);
+CREATE TABLE IF NOT EXISTS Donkeys
+(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    dayOfBirth DATETIME,
+    nameAnimal VARCHAR (30) NOT NULL,
+    commands TEXT,
+    age INT
+);
+
+CREATE TABLE IF NOT EXISTS Pets
+(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    AnimalType VARCHAR (30) NOT NULL
+);
+CREATE TABLE IF NOT EXISTS BaggageAnimals
+(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    AnimalType VARCHAR (30) NOT NULL
+);
+
+
+
+INSERT INTO Cats (dayOfBirth, nameAnimal, commands)
+VALUES
+    (13-05-2022, 'Vasya', 'GO, STOP, LIE DOWN, JUMP'),
+    (10-05-2022, 'Fluffy', 'GO, STOP, LIE DOWN, JUMP'),
+    (23-10-2022, 'Paola', 'GO, STOP, LIE DOWN, JUMP');
+INSERT INTO Dogs (dayOfBirth, nameAnimal, commands)
+VALUES
+    (13-04-2022, 'Tuzik', 'GO, STOP, LIE DOWN, JUMP', 'VOICE'),
+    (10-04-2022, 'Bobik', 'GO, STOP, LIE DOWN, JUMP', 'VOICE'),
+    (23-11-2022, 'Tarzan-Narzan', 'GO, STOP, LIE DOWN, JUMP', 'VOICE');
+INSERT INTO Hamsters (dayOfBirth, nameAnimal, commands)
+VALUES
+    (13-03-2020, 'Kabanchik', NULL),
+    (10-02-2022, 'Bublic', NULL),
+    (23-04-2019, 'The Homyak', NULL); -- хомяки, к сожалению, необучаемы
+INSERT INTO Camels (dayOfBirth, nameAnimal, commands)
+VALUES
+    (13-06-2017, 'Gosha', 'GO, STOP, LIE DOWN'),
+    (10-06-2018, 'Sasha', 'GO, STOP, LIE DOWN');
+INSERT INTO Horses (dayOfBirth, nameAnimal, commands)
+VALUES
+    (13-07-2016, 'Liberty', 'GO, STOP, LIE DOWN'),
+    (10-09-2018, 'Harmony', 'GO, STOP, LIE DOWN');
+INSERT INTO Donkeys (dayOfBirth, nameAnimal, commands)
+VALUES
+    (13-10-2019, 'Hector', 'GO, STOP, LIE DOWN'),
+    (10-11-2018, 'Shpulka', 'GO, STOP, LIE DOWN');
+
+-- Верблюдов перевели в другой питомник. Пока, Гоша и Саша
+DROP TABLE Camels;
+SELECT id, dayOfBirth, nameAnimal, commands, age FROM Horses UNION ALL SELECT id, dayOfBirth, nameAnimal, commands, age FROM Donkeys;
+
+SELECT
+	`nameAnimal`, 
+    `dayOfBirth`,
+	(YEAR(CURRENT_DATE)-YEAR(`dayOfBirth`))-(RIGHT(CURRENT_DATE,5)<RIGHT(`dayOfBirth`,5))
+	AS `age`
+FROM Cats, Dogs, Hamsters, Horses, Donkeys
+ORDER BY `nameAnimal`;
+
+SELECT *
+FROM Cats, Dogs, Hamsters, Horses, Donkeys
+WHERE 1<age<3;
+
+SELECT * 
+FROM Cats, Dogs, Hamsters, Horses, Donkeys
